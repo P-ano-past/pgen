@@ -28,8 +28,50 @@ let preshuff = upperCase.concat(lowerCase, specChars, numbers);
 shuff(preshuff)
 console.log(preshuff)
 
+
 // loops the preShuff
 for (i = 0; i < 1000; i++) {
     shuff(preshuff)
+};
+
+//HTML query selectors
+let pwLength = document.querySelector("#pw-length");
+let upCase = document.querySelector("#upper-case");
+let lowCase = document.querySelector("#lower-case");
+let specialCh = document.querySelector("#spec-chars");
+let numInput = document.querySelector("#numbers");
+let submitBtn = document.querySelector("#submit");
+
+// Goal here is to create a function that takes the selected checkbox and outputs if box is checked or not. 
+
+if (document.querySelectorAll("checkbox"))
+
+
+
+// After that is completed, I need to determin how to extract an exact ammount of array objects as an output. 
+
+// When i click something happens
+function showEl() {
+    let pwLength = document.querySelector("#pw-length").value;
+    
+    if (isNaN(pwLength) === false) {
+        return pwLength;
+        
+    } else if (isNaN(pwLength) === true) {
+        return alert("Error: please input a numerical value")
+    }
+    
 }
+
+// This is where the product of preShuff should be inserted and looped through as an output. the result should be the number of chars user has selected.  
+submitBtn.addEventListener("click", function() {
+    event.preventDefault();
+
+    let pwLength = document.querySelector("#pw-length").value;
+  
+    if (pwLength === null) {
+        alert("sdfgsdfgsdfg")
+    }  console.log(pwLength)
+});
+
 

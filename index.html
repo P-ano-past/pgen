@@ -8,35 +8,32 @@
         <link rel="stylesheet" href="./styles/style.css">
     </head>
     <body>        
-        <script src="pgen.js"></script>
+        
 
         <p>Choose password requirements</p>
 
             <div>
-                <input type="checkbox" id="upperCase" name="upperCase">
-                <label for="upperCase">Upper case (ex: "PASSWORD")</label>
+                <input type="checkbox" id="upper-case" name="upper-case" value="1"/>
+                <label for="upper-case">Upper case (ex: "PASSWORD")</label>
             </div>
             <div>
-                <input type="checkbox" id="lowerCase" name="lowerCase">
-                <label for="lowerCase">Lower case (ex: "password")</label>
+                <input type="checkbox" id="lower-case" name="lower-case" value="1"/>
+                <label for="lower-case">Lower case (ex: "password")</label>
             </div>
             <div>
-                <input type="checkbox" id="specChars" name="specChars">
-                <label for="specChars">Special caracters (ex: "~!@#$%^&*()")</label>
+                <input type="checkbox" id="spec-chars" name="spec-chars" value="1"/>
+                <label for="spec-chars">Special caracters (ex: "~!@#$%^&*()")</label>
             </div>
             <div>
-                <input type="checkbox" id="numbers" name="numbers">
+                <input type="checkbox" id="numbers" name="numbers" value="1"/>
                 <label for="numbers">Numbers (ex: "12345678909")</label>
             </div>
             <div>
-                <input type="number" id="pwLength" name="pwLength" min="8" placeholder="16">
-                <label for="pwLength">Password length (Number of characters)</label>
+                <input type="text" id="pw-length" name="pw-length" min="8" placeholder="8" value=""/>
+                <label for="pw-length">Password length (Number of characters between 8 and 93)</label>
             </div>
 
-            <button id="submit" name="submit">Submit</button>
-
-            
-
-
+            <button id="submit" name="submit" onclick="showEl()">Submit</button>
+            <script src="pgen.js"></script>
     </body>
 </html>
