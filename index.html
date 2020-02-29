@@ -13,23 +13,23 @@
         <p>Choose password requirements</p>
 
             <div>
-                <input type="checkbox" id="upper-case" onclick="getUpCase()" name="upper-case"/>
+                <input type="checkbox" id="upper-case" onclick="getUpCase()" name="upper-case" checked/>
                 <label for="upper-case">Upper case (ex: "PASSWORD")</label>
             </div>
             <div>
-                <input type="checkbox" id="lower-case" onclick="getLowCase()" name="lower-case"/>
+                <input type="checkbox" id="lower-case" onclick="getLowCase()" name="lower-case" checked/>
                 <label for="lower-case">Lower case (ex: "password")</label>
             </div>
             <div>
-                <input type="checkbox" id="spec-chars" onclick="getSpecCase()" name="spec-chars"/>
+                <input type="checkbox" id="spec-chars" onclick="getSpecCase()" name="spec-chars" checked/>
                 <label for="spec-chars">Special caracters (ex: "~!@#$%^&*()")</label>
             </div>
             <div>
-                <input type="checkbox" id="numbers" onclick="getNumVal()" name="numbers"/>
+                <input type="checkbox" id="numbers" onclick="getNumVal()" name="numbers" checked/>
                 <label for="numbers">Numbers (ex: "12345678909")</label>
             </div>
             <div>
-                <input type="text" id="pw-length" name="pw-length" min="8" placeholder="8" value=""/>
+                <input type="text" id="pw-length" name="pw-length" min="8" placeholder="8" value="8"/>
                 <label for="pw-length">Password length (Number of characters between 8 and 93)</label>
             </div>
 

@@ -1,53 +1,61 @@
-let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I','J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I','J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v','w', 'x', 'y', 'z'];
+const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v','w', 'x', 'y', 'z'];
 
-let specChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '=', '+', '[', '{', ']', '}', '|', ';', ':', ',', '.', '<', '>', '/', '?', '`', '~', "'", '"'];
+const specChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '=', '+', '[', '{', ']', '}', '|', ';', ':', ',', '.', '<', '>', '/', '?', '`', '~', "'", '"'];
 
-let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 
 
 //HTML query selectors
-let pwLength = document.querySelector("#pw-length");
-let upCase = document.querySelector("#upper-case");
-let lowCase = document.querySelector("#lower-case");
-let specialCh = document.querySelector("#spec-chars");
-let numInput = document.querySelector("#numbers");
-let submitBtn = document.querySelector("#submit");
-let checkArr = []
+const pwLength = document.querySelector("#pw-length");
+const upCase = document.querySelector("#upper-case");
+const lowCase = document.querySelector("#lower-case");
+const specialCh = document.querySelector("#spec-chars");
+const numInput = document.querySelector("#numbers");
+const submitBtn = document.querySelector("#submit");
+const checkArr = []
 
 //checkbox I/O: else if statment removes if box is unchecked. 
 function getUpCase() {
     let cBoxEl = document.querySelector("#upper-case");
     if (cBoxEl.checked == true) { 
-         return checkArr.push(upperCase)
+         return checkArr.push(upperCase), console.log("upcase returned")
     } else if (cBoxEl.checked == false) {
-        return checkArr.pop()
+        checkArr.splice(checkArr.indexOf(upperCase), 1)
+        console.log("upcase removed")
+        console.log(checkArr)
     }
 }
 function getLowCase() {
     let cBoxEl = document.querySelector("#lower-case");
     if (cBoxEl.checked == true) {
-         return checkArr.push(lowerCase)
+         return checkArr.push(lowerCase), console.log("lowcase returned")
     } else if (cBoxEl.checked == false) {
-        return checkArr.pop()
+        checkArr.splice(checkArr.indexOf(lowCase), 1)
+        console.log("lowcase removed")
+        console.log(checkArr)
     }
 }
 function getSpecCase() {
     let cBoxEl = document.querySelector("#spec-chars");
     if (cBoxEl.checked == true) {
-         return checkArr.push(specChars)
+         return checkArr.push(specChars), console.log("specChars returned")
     } else if (cBoxEl.checked == false) {
-        return checkArr.pop()
+        checkArr.splice(checkArr.indexOf(specChars), 1)
+        console.log("specChars removed")
+        console.log(checkArr)
     }
 }
 function getNumVal() {
     let cBoxEl = document.querySelector("#numbers");
     if (cBoxEl.checked == true) {
-         return checkArr.push(numbers)
+         return checkArr.push(numbers), console.log("numbers returned")
     } else if (cBoxEl.checked == false) {
-        return checkArr.pop()
+        checkArr.splice(checkArr.indexOf(numbers), 1)
+        console.log("numbers removed")
+        console.log(checkArr)
     }
 }
 
@@ -55,6 +63,10 @@ function getNumVal() {
 
 //shuffle function
 let shuff = function (array) {
+
+    //console.log(array)
+    
+
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
 
@@ -68,13 +80,6 @@ let shuff = function (array) {
     }
     return array; 
 }
-
-for (i = 0; i < 1000; i++) {
-    shuff(checkArr)
-};
-
-console.log(checkArr)
-
 // After that is completed, I need to determin how to extract an exact ammount of array objects as an output. 
 
 // When i click something happens
@@ -99,6 +104,30 @@ submitBtn.addEventListener("click", function() {
     if (pwLength === null) {
         alert("sdfgsdfgsdfg")
     }  
-});
 
+    getLowCase()
+    getUpCase()
+    getSpecCase()
+    getNumVal()
+
+    let array = checkArr.flat()
+    for( let i = 0; i < 1000; i++){
+        array = shuff(array)
+    }
+
+    console.log(array)
+
+    let password = ""
+
+    for(let i = 0; i < pwLength; i++){
+        // generate random index 
+        // access that index and concat to password string 
+        // print
+        let index = Math.floor( Math.random() * array.length)
+        password += array[index]
+    }
+
+    console.log(password)
+
+});
 
