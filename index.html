@@ -13,19 +13,19 @@
         <p>Choose password requirements</p>
 
             <div>
-                <input type="checkbox" id="upper-case" name="upper-case" value="1"/>
+                <input type="checkbox" id="upper-case" onclick="getUpCase()" name="upper-case"/>
                 <label for="upper-case">Upper case (ex: "PASSWORD")</label>
             </div>
             <div>
-                <input type="checkbox" id="lower-case" name="lower-case" value="1"/>
+                <input type="checkbox" id="lower-case" onclick="getLowCase()" name="lower-case"/>
                 <label for="lower-case">Lower case (ex: "password")</label>
             </div>
             <div>
-                <input type="checkbox" id="spec-chars" name="spec-chars" value="1"/>
+                <input type="checkbox" id="spec-chars" onclick="getSpecCase()" name="spec-chars"/>
                 <label for="spec-chars">Special caracters (ex: "~!@#$%^&*()")</label>
             </div>
             <div>
-                <input type="checkbox" id="numbers" name="numbers" value="1"/>
+                <input type="checkbox" id="numbers" onclick="getNumVal()" name="numbers"/>
                 <label for="numbers">Numbers (ex: "12345678909")</label>
             </div>
             <div>
@@ -35,5 +35,7 @@
 
             <button id="submit" name="submit" onclick="showEl()">Submit</button>
             <script src="pgen.js"></script>
+
+            <p>Your new password:<p id="result"> </p>
     </body>
 </html>
