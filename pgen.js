@@ -15,14 +15,15 @@ const lowCase = document.querySelector("#lower-case");
 const specialCh = document.querySelector("#spec-chars");
 const numInput = document.querySelector("#numbers");
 const submitBtn = document.querySelector("#submit");
+const ctcBtn = document.querySelector("#ctc");
 let checkArr = []
-
+console.log(checkArr)
 function getUpCase() {
     let cBoxEl = document.querySelector("#upper-case");
     if (cBoxEl.checked == true) { 
          return checkArr.push(upperCase)
     } else if (cBoxEl.checked == false) {
-        checkArr.splice(checkArr.indexOf(upperCase), 1)
+        checkArr.splice(checkArr.indexOf(upperCase))
     }
 }
 function getLowCase() {
@@ -30,7 +31,7 @@ function getLowCase() {
     if (cBoxEl.checked == true) {
          return checkArr.push(lowerCase) 
     } else if (cBoxEl.checked == false) {
-        checkArr.splice(checkArr.indexOf(lowCase), 1)
+        checkArr.splice(checkArr.indexOf(lowCase))
     }
 }
 function getSpecCase() {
@@ -38,7 +39,7 @@ function getSpecCase() {
     if (cBoxEl.checked == true) {
          return checkArr.push(specChars)
     } else if (cBoxEl.checked == false) {
-        checkArr.splice(checkArr.indexOf(specChars), 1)
+        checkArr.splice(checkArr.indexOf(specChars))
     }
 }
 function getNumVal() {
@@ -46,10 +47,11 @@ function getNumVal() {
     if (cBoxEl.checked == true) {
          return checkArr.push(numbers)
     } else if (cBoxEl.checked == false) {
-        checkArr.splice(checkArr.indexOf(numbers), 1)
+        checkArr.splice(checkArr.indexOf(numbers))
     }
 }
 
+console.log(checkArr)
 
 //shuffle function
 let shuff = function (array) {
@@ -69,6 +71,7 @@ let shuff = function (array) {
     return array; 
 }
 
+console.log(checkArr)
 
 function showEl() {
     let pwLength = document.querySelector("#pw-length").value;
@@ -79,26 +82,36 @@ function showEl() {
     } else if (isNaN(pwLength) === true) {
         return alert("Error: please input a numerical value")
     }
+}
+console.log(checkArr)
 
+function copyText() {
+    let copyTextEl = document.querySelector("#result")
+
+    copyTextEl.select();
+    document.execCommand("copy");
+
+    alert("Saved to clipboard.")
 }
 
 submitBtn.addEventListener("click", function() {
     event.preventDefault();
-
-    let pwLength = document.querySelector("#pw-length").value;
 
     getLowCase()
     getUpCase()
     getSpecCase()
     getNumVal()
 
+    let pwLength = document.querySelector("#pw-length").value;
+
     let array = checkArr.flat()
     for( let i = 0; i < 1000; i++){
         array = shuff(array)
     }
+    
 
     let password = ""
-
+ 
     for(let i = 0; i < pwLength; i++){
         // generate random index 
         // access that index and concat to password string 
@@ -106,8 +119,14 @@ submitBtn.addEventListener("click", function() {
         let index = Math.floor( Math.random() * array.length)
         password += array[index]
     }
+    
+
     document.getElementById("result").innerHTML = password;
-    console.log(checkArr)
+    while (checkArr.length > 0) {
+        checkArr.pop()
+        // this while loop removes the additinoal items in checkArr. 
+    }
+    
+
 });
 
-//clicking submit more than once with all options selected adds more items to array

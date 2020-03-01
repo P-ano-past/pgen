@@ -6,36 +6,77 @@
         <meta name="description" content="Password Generator">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     </head>
     <body>        
-        
-
-        <p>Choose password requirements</p>
-
-            <div>
-                <input type="checkbox" id="upper-case" onclick="getUpCase()" name="upper-case" checked/>
-                <label for="upper-case">Upper case (ex: "PASSWORD")</label>
-            </div>
-            <div>
-                <input type="checkbox" id="lower-case" onclick="getLowCase()" name="lower-case" checked/>
-                <label for="lower-case">Lower case (ex: "password")</label>
-            </div>
-            <div>
-                <input type="checkbox" id="spec-chars" onclick="getSpecCase()" name="spec-chars" checked/>
-                <label for="spec-chars">Special caracters (ex: "~!@#$%^&*()")</label>
-            </div>
-            <div>
-                <input type="checkbox" id="numbers" onclick="getNumVal()" name="numbers" checked/>
-                <label for="numbers">Numbers (ex: "12345678909")</label>
-            </div>
-            <div>
-                <input type="text" id="pw-length" name="pw-length" min="8" placeholder="8" value="8"/>
-                <label for="pw-length">Password length (Number of characters between 8 and 93)</label>
-            </div>
-
-            <button id="submit" name="submit" onclick="showEl()">Submit</button>
-            <script src="pgen.js"></script>
-
-            <p>Your new password:<p id="result"> </p>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <h1>Please select your password requirements</h1>
+                    <br>
+                    <div class="input-group-text">
+                        <div class="row">
+                            <div class="column"></div>
+                            <div class="column"></div>
+                            <div class="column">
+                                <div class="column">
+                                    <input type="checkbox" id="upper-case" onclick="getUpCase()" name="upper-case" checked/>
+                                    <label for="upper-case"><h5>Upper case (ex: "PASSWORD")</h5></label>
+                                </div>
+                                <div class="column">
+                                    <input type="checkbox" id="lower-case" onclick="getLowCase()" name="lower-case" checked/>
+                                    <label for="lower-case"><h5>Lower case (ex: "password")</h5></label>
+                                </div>
+                            </div>
+                            <!-- <div class="column"></div>
+                            <div class="column"></div> -->
+                        </div>
+                        <div class="row">
+                            <!-- <div class="column"></div>
+                            <div class="column"></div> -->
+                            <div class="column">
+                                <div class="column">
+                                    <input type="checkbox" id="spec-chars" onclick="getSpecCase()" name="spec-chars" checked/>
+                                    <label for="spec-chars"><h5>Special caracters (ex: "~!@#$%^&*()")</h5></label>
+                                </div>
+                                <div class="column">
+                                    <input type="checkbox" id="numbers" onclick="getNumVal()" name="numbers" checked/>
+                                    <label for="numbers"><h5>Numbers (ex: "12345678909")</h5></label>
+                                </div>
+                            </div>
+                            <div class="column"></div>
+                            <div class="column"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <br>
+                            <h6>Password length (Number of characters)</h6>
+                            <br>
+                            <input type="text" id="pw-length" name="pw-length" min="8" placeholder="8" value="8"/>
+                            <label for="pw-length"></label>
+                            <br>
+                            <br>
+                            <button id="submit" name="submit" class="btn btn-dark" onclick="showEl()">Submit</button></div>
+                        <div class="column">
+                        </div>
+                        <div class="column">
+                        </div>
+                        <div class="column">
+                        </div>
+                        <div class="column">
+                            <div class="column">
+                                <strong></strong><p><h6>Your new password:</h6></strong>
+                                        <textarea id="result"></textarea>
+                                        <br>
+                                    <button id="ctc" class="btn btn-dark" onclick="copyText()">Copy to clipboard</button>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>    
+        </div>
+        <script src="pgen.js"></script>
     </body>
 </html>
