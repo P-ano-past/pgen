@@ -15,58 +15,46 @@ const lowCase = document.querySelector("#lower-case");
 const specialCh = document.querySelector("#spec-chars");
 const numInput = document.querySelector("#numbers");
 const submitBtn = document.querySelector("#submit");
-const checkArr = []
+let checkArr = []
 
-//checkbox I/O: else if statment removes if box is unchecked. 
 function getUpCase() {
     let cBoxEl = document.querySelector("#upper-case");
     if (cBoxEl.checked == true) { 
-         return checkArr.push(upperCase), console.log("upcase returned")
+         return checkArr.push(upperCase)
     } else if (cBoxEl.checked == false) {
         checkArr.splice(checkArr.indexOf(upperCase), 1)
-        console.log("upcase removed")
-        console.log(checkArr)
     }
 }
 function getLowCase() {
     let cBoxEl = document.querySelector("#lower-case");
     if (cBoxEl.checked == true) {
-         return checkArr.push(lowerCase), console.log("lowcase returned")
+         return checkArr.push(lowerCase) 
     } else if (cBoxEl.checked == false) {
         checkArr.splice(checkArr.indexOf(lowCase), 1)
-        console.log("lowcase removed")
-        console.log(checkArr)
     }
 }
 function getSpecCase() {
     let cBoxEl = document.querySelector("#spec-chars");
     if (cBoxEl.checked == true) {
-         return checkArr.push(specChars), console.log("specChars returned")
+         return checkArr.push(specChars)
     } else if (cBoxEl.checked == false) {
         checkArr.splice(checkArr.indexOf(specChars), 1)
-        console.log("specChars removed")
-        console.log(checkArr)
     }
 }
 function getNumVal() {
     let cBoxEl = document.querySelector("#numbers");
     if (cBoxEl.checked == true) {
-         return checkArr.push(numbers), console.log("numbers returned")
+         return checkArr.push(numbers)
     } else if (cBoxEl.checked == false) {
         checkArr.splice(checkArr.indexOf(numbers), 1)
-        console.log("numbers removed")
-        console.log(checkArr)
     }
 }
-
 
 
 //shuffle function
 let shuff = function (array) {
 
-    //console.log(array)
-    
-
+    // console.log(array)
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
 
@@ -80,14 +68,13 @@ let shuff = function (array) {
     }
     return array; 
 }
-// After that is completed, I need to determin how to extract an exact ammount of array objects as an output. 
 
-// When i click something happens
+
 function showEl() {
     let pwLength = document.querySelector("#pw-length").value;
     
     if (isNaN(pwLength) === false) {
-        return pwLength, console.log(pwLength)
+        return pwLength
         
     } else if (isNaN(pwLength) === true) {
         return alert("Error: please input a numerical value")
@@ -95,15 +82,10 @@ function showEl() {
 
 }
 
-// This is where the product of preShuff should be inserted and looped through as an output. the result should be the number of chars user has selected.  
 submitBtn.addEventListener("click", function() {
     event.preventDefault();
 
     let pwLength = document.querySelector("#pw-length").value;
-  
-    if (pwLength === null) {
-        alert("sdfgsdfgsdfg")
-    }  
 
     getLowCase()
     getUpCase()
@@ -115,8 +97,6 @@ submitBtn.addEventListener("click", function() {
         array = shuff(array)
     }
 
-    console.log(array)
-
     let password = ""
 
     for(let i = 0; i < pwLength; i++){
@@ -126,8 +106,8 @@ submitBtn.addEventListener("click", function() {
         let index = Math.floor( Math.random() * array.length)
         password += array[index]
     }
-
-    console.log(password)
-
+    document.getElementById("result").innerHTML = password;
+    console.log(checkArr)
 });
 
+//clicking submit more than once with all options selected adds more items to array
